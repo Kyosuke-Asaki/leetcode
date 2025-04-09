@@ -1,18 +1,14 @@
-class Solution:
-    def twoSum(self, nums:List, target: int) -> List:
-        hash_table = {}
-        n = len(nums)
+class solution:
+    def twoSum(self, nums: List, target: int) -> List:
+        KeyToValue = {}
 
-        # ハッシュテーブルを作る
-        for i in range(n):
-            hash_table[nums[i]] = i
+        # ハッシュテーブルにペアの候補があるかサーチする。
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in KeyToValue:
+                return [i, KeyToValue[complement]]
+            else:
+                KeyToValue[num] = i
 
-        # ハッシュテーブル内に所望の値があるか
-        for i in range(n):
-            complement = target - nums[i]
-            # 同じ値のペアが解になるケースでは、異なる2つのインデックスを出力する必要がある
-            if (complement in hash_table) and (hash_table[complement] != i):
-                return [i, hash_table[complement]]
-
-        # 解なしの場合の処理
-        return []
+        print('"nums" has no pair corresponding to the "target".')
+        raise KeyError
