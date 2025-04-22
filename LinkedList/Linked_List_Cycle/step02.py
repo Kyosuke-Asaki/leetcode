@@ -11,7 +11,6 @@ class Solution:
         while head:
             if head in visited_nodes:
                 return True
-            else:
-                visited_nodes.add(head)
-                head = head.next
+            visited_nodes.add(head)
+            head = head.next
         return False

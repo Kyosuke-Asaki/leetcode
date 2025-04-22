@@ -65,15 +65,14 @@ class Solution(object):
         max_num_of_nodes = int(1e4+1)
 
         nodes = []
-        head_next = head
+        node = head
         for i in range(max_num_of_nodes):
-            if head_next in nodes:
+            if node in nodes:
                 return True
-            elif head_next is None:
+            if node is None:
                 return False
-            else:
-                nodes.append(head_next)
-                head_next = head_next.next
+            nodes.append(node)
+            node = node.next
         print("ノードの数が多すぎるため停止しました")
         raise TypeError
 
