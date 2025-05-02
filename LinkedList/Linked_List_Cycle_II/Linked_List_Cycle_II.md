@@ -13,8 +13,6 @@ class Solution:
         while node:
             if node in visited_nodes:
                 return node
-            if node is None:
-                return None
             visited_nodes.add(node)
             node = node.next
 
@@ -95,7 +93,7 @@ class Solution:
             if fast == slow:
                 break
 
-        # ループが存在せず上のwhileが終了した場合
+        # サイクルが存在せず上のwhileが終了した場合
         if fast.next is None or fast.next.next is None:
             return None
 
@@ -114,6 +112,7 @@ class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         slow = head
         fast = head
+        
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
@@ -121,6 +120,7 @@ class Solution:
                 break
         else:
             return None
+        
         fast = head
         while slow is not fast:
             slow = slow.next
